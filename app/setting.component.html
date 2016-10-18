@@ -2,9 +2,31 @@
 
 <div>
     <label>first layer curing time</label>
-    <input [(ngModel)]="curing_time"  placeholder="3.0" disabled>
-    <button (click)="increase()">increase</button>
-    <button (click)="decrease()">decrease</button>
+    <input disabled [(ngModel)]="curing_time">
+    <input
+       type="range"
+       min="{{curing_time_min}}"
+       max="{{curing_time_max}}"
+       step="0.1"
+       [(ngModel)]="curing_time">
+
+    <button (click)="curing_time_decrease()">-</button>
+    <button (click)="curing_time_increase()">+</button>
 </div>
 
+<div>
+  <label>number of layer buffers</label>
+  <input disabled [(ngModel)]="num_of_layer_buffers">
+  <input
+     type="range"
+     min="{{num_of_layer_buffers_min}}"
+     max="{{num_of_layer_buffers_max}}"
+     step="1"
+     [(ngModel)]="num_of_layer_buffers">
+
+  <button (click)="num_of_layer_buffers_decrease()">-</button>
+  <button (click)="num_of_layer_buffers_increase()">+</button>
+</div>
+
+<button (click)="goBack()">back</button>
 

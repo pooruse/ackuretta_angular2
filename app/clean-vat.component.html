@@ -1,0 +1,9 @@
+<h2>cleanVAT</h2>
+<div *ngIf="!isClean">
+    <button (click)="start()">start</button>
+    <button (click)="goBack()">back</button>
+</div>
+
+<div *ngIf="isClean">
+  clean.... {{count}} s
+</div>

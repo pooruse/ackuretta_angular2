@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu.component';
 import { SettingComponent } from './setting.component';
+import { CleanVATComponent } from './clean-vat.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SettingComponent } from './setting.component';
     declarations: [
 	AppComponent,
 	MenuComponent,
-	SettingComponent
+	SettingComponent,
+	CleanVATComponent
     ],
     bootstrap: [ AppComponent ]
 })
