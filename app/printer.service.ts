@@ -1,43 +1,82 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
+export class MY_PARAM {
+    value: number;
+    max: number;
+    min: number;
+    resolution: number;
+}
+
 @Injectable()
 export class PrinterService {
+
+    curing_time: MY_PARAM = {
+	value: 2.0,
+	max: 9.9,
+	min: 1.0,
+	resolution: 0.1
+    };
+
+    layer_buffer: MY_PARAM = {
+	value: 3,
+	max: 99,
+	min: 0,
+	resolution: 1
+    };
+
+    vat_tilt: MY_PARAM = {
+	value: 512,
+	max: 1023,
+	min: 0,
+	resolution: 1
+    };
     
-    curing_time: number = 2;
-    num_of_layer_buffers: number = 3.0;
-    vat_tilt: number = 512;
     progress: number = 0;
-    private progress_subscription: any;   
-
-    set_curing_time(time: number): void {
-	console.log('set_curing_time');
-	this.curing_time = time;
-    }
-
-    get_curing_time(): number {
-	console.log('get_curing_time');	    
+    private progress_subscription: any;
+    
+    get_curing_time(): MY_PARAM {
+	console.log('get_curing_time');
 	return this.curing_time;
     }
-
-    set_num_of_layer_buffers(num: number): void {
-	console.log('set_num_of_layer_buffers');
-	this.num_of_layer_buffers = num;
+    
+    set_curing_time_value(time: number): void {
+	console.log('set_curing_time_value');
+	this.curing_time.value = time;
     }
 
-    get_num_of_layer_buffers(): number {
-	console.log('get_num_of_layer_buffers');
-	return this.num_of_layer_buffers;
+    get_curing_time_value(): number {
+	console.log('get_curing_time_value');	    
+	return this.curing_time.value;
     }
 
-    set_vat_tilt(tilt: number): void {
-	console.log('set_vat_tilt');
-	this.vat_tilt = tilt;
+    get_layer_buffer(): MY_PARAM {
+	console.log('get_layer_buffer');
+	return this.layer_buffer;
+    }
+    set_layer_buffer_value(num: number): void {
+	console.log('set_layer_buffer_value');
+	this.layer_buffer.value = num;
     }
 
-    get_vat_tilt(): number {
+    get_layer_buffer_value(): number {
+	console.log('get_layer_buffer_value');
+	return this.layer_buffer.value;
+    }
+
+    get_vat_tilt(): MY_PARAM {
 	console.log('get_vat_tilt');
 	return this.vat_tilt;
+    }
+    
+    set_vat_tilt_value(tilt: number): void {
+	console.log('set_vat_tilt_value');
+	this.vat_tilt.value = tilt;
+    }
+
+    get_vat_tilt_value(): number {
+	console.log('get_vat_tilt_value');
+	return this.vat_tilt.value;
     }
 
     clean_vat(): void {

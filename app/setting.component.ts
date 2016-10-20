@@ -1,7 +1,7 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { PrinterService } from './printer.service';
+import { PrinterService, MY_PARAM } from './printer.service';
 
 @Component({
     moduleId: module.id,
@@ -11,14 +11,8 @@ import { PrinterService } from './printer.service';
 
 export class SettingComponent  implements OnInit{
     
-    curing_time: number = 3.0;
-    curing_time_max: number = 9.9;
-    curing_time_min: number = 0.0;
-    
-    num_of_layer_buffers: number = 2;
-    num_of_layer_buffers_max: number = 99;
-    num_of_layer_buffers_min: number = 0;
-    
+    curing_time: MY_PARAM;
+    layer_buffer: MY_PARAM;
     
     constructor(
 	private location: Location,
@@ -27,51 +21,59 @@ export class SettingComponent  implements OnInit{
 
     ngOnInit(): void {
 	this.curing_time = this.printerService.get_curing_time();
-	this.num_of_layer_buffers = this.printerService.get_num_of_layer_buffers();
+	this.layer_buffer = this.printerService.get_layer_buffer();
     }
     
     curing_time_increase(): void {
-	if(this.curing_time + 1 < this.curing_time_max ){
-	    this.curing_time = Math.round( (this.curing_time + 1) * 10) / 10;
+	let tmp: number = this.curing_time.value;
+	tmp++;
+	if(tmp < this.curing_time.max ){
+	    this.curing_time.value = Math.round( (++this.curing_time.value) * 10) / 10;
 	} else {
-	    this.curing_time = this.curing_time_max;
+	    this.curing_time.value = this.curing_time.max;
 	}
-	this.printerService.set_curing_time(this.curing_time);
+	this.printerService.set_curing_time_value(this.curing_time.value);
     }
 
     curing_time_decrease(): void {
-	if(this.curing_time - 1 > this.curing_time_min) {
-	    this.curing_time = Math.round( (this.curing_time - 1) * 10 ) / 10;
+	let tmp: number = this.curing_time.value;
+	tmp--;
+	if(tmp > this.curing_time.min) {
+	    this.curing_time.value = Math.round( (--this.curing_time.value) * 10 ) / 10;
 	} else {
-	    this.curing_time = this.curing_time_min;
+	    this.curing_time.value = this.curing_time.min;
 	}
-	this.printerService.set_curing_time(this.curing_time);
+	this.printerService.set_curing_time_value(this.curing_time.value);
     }
     
-    set_curing_time(): void {
-	this.printerService.set_curing_time(this.curing_time);
+    set_curing_time_value(): void {
+	this.printerService.set_curing_time_value(this.curing_time.value);
     }
     
-    num_of_layer_buffers_increase(): void {
-	if(this.num_of_layer_buffers + 1 < this.num_of_layer_buffers_max ){
-	    this.num_of_layer_buffers++;
+    layer_buffer_increase(): void {
+	let tmp: number = this.layer_buffer.value;
+	tmp++;
+	if(tmp < this.layer_buffer.max ){
+	    this.layer_buffer.value++;
 	} else {
-	    this.num_of_layer_buffers = this.num_of_layer_buffers_max;
+	    this.layer_buffer.value = this.layer_buffer.max;
 	}
-	this.printerService.set_num_of_layer_buffers(this.num_of_layer_buffers_max);
+	this.printerService.set_layer_buffer_value(this.layer_buffer.value);
     }
 
-    num_of_layer_buffers_decrease(): void {
-	if(this.num_of_layer_buffers - 1 > this.num_of_layer_buffers_min) {
-	    this.num_of_layer_buffers--;
+    layer_buffer_decrease(): void {
+	let tmp: number = this.layer_buffer.value;
+	tmp--;
+	if(tmp > this.layer_buffer.min) {
+	    this.layer_buffer.value--;
 	} else {
-	    this.num_of_layer_buffers = this.num_of_layer_buffers_min;
+	    this.layer_buffer.value = this.layer_buffer.min;
 	}
-	this.printerService.set_num_of_layer_buffers(this.num_of_layer_buffers_max);
+	this.printerService.set_layer_buffer_value(this.layer_buffer.value);
     }
 
-    set_num_of_layer_buffers(): void {
-	this.printerService.set_num_of_layer_buffers(this.num_of_layer_buffers);
+    set_layer_buffer_value(): void {
+	this.printerService.set_layer_buffer_value(this.layer_buffer.value);
     }
 
 }

@@ -1,1 +1,15 @@
 <h2>Recomfirm Curing Time</h2>
+<p>Layer curing time is {{curing_time.value}} s.<br>
+  do you want to change?
+</p>
+<div *ngIf="isChange">
+    <input disabled [(ngModel)]="curing_time.value">
+    <input type="range"
+	   min="{{curing_time.min}}"
+	   max="{{curing_time.max}}"
+	   step="{{curing_time.resolution}}"
+	   (change)="set_curing_time_value()"
+	   [(ngModel)]="curing_time.value">
+</div>
+<button>comfirm</button>
+<button (click)="setIsChange()">change</button>
