@@ -11,10 +11,6 @@ export class SettingComponent {
 
     constructor(private location: Location){}
 
-    goBack(): void {
-	this.location.back();
-    }
-    
     curing_time: number = 3.0;
     curing_time_max: number = 9.9;
     curing_time_min: number = 0.0;

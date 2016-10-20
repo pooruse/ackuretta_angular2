@@ -1,7 +1,7 @@
 <h2>cleanVAT</h2>
 <div *ngIf="!isClean">
     <button (click)="start()">start</button>
-    <button (click)="goBack()">back</button>
+    <button (click)="this.location.back()">back</button>
 </div>
 
 <div *ngIf="isClean">

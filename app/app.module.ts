@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu.component';
 import { SettingComponent } from './setting.component';
 import { CleanVATComponent } from './clean-vat.component';
+import { SelectStorageComponent } from './select-storage.component';
+import { SelectFileFromMemoryComponent } from './select-file-from-memory.component';
+import { SelectFileFromUSBComponent } from './select-file-from-usb.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { CleanVATComponent } from './clean-vat.component';
 	AppComponent,
 	MenuComponent,
 	SettingComponent,
-	CleanVATComponent
+	CleanVATComponent,
+	SelectStorageComponent,
+	SelectFileFromMemoryComponent,
+	SelectFileFromUSBComponent,
     ],
     bootstrap: [ AppComponent ]
 })
