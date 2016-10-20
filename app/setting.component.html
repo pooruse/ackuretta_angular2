@@ -8,6 +8,7 @@
        min="{{curing_time_min}}"
        max="{{curing_time_max}}"
        step="0.1"
+       (change)="set_curing_time()"
        [(ngModel)]="curing_time">
 
     <button (click)="curing_time_decrease()">-</button>
@@ -22,6 +23,7 @@
      min="{{num_of_layer_buffers_min}}"
      max="{{num_of_layer_buffers_max}}"
      step="1"
+     (change)="set_num_of_layer_buffers()"
      [(ngModel)]="num_of_layer_buffers">
 
   <button (click)="num_of_layer_buffers_decrease()">-</button>
