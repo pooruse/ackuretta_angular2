@@ -8,6 +8,13 @@ export class MY_PARAM {
     resolution: number;
 }
 
+export enum PRINTER_STATUS {
+    READY,
+    BUSY,
+    PAUSE,
+    ERROR,
+}
+
 @Injectable()
 export class PrinterService {
 
@@ -34,6 +41,7 @@ export class PrinterService {
     
     progress: number = 0;
     private progress_subscription: any;
+    private printer_status: PRINTER_STATUS = PRINTER_STATUS.READY;
     
     get_curing_time(): MY_PARAM {
 	console.log('get_curing_time');
@@ -83,10 +91,7 @@ export class PrinterService {
 	console.log('send clean_vat command');
     }
 
-    get_status():  boolean {
-	console.log('get_status');
-	return true;
-    }
+
     get_fan_status(): boolean {
 	let a = Math.random();
 	console.log('get_fan_status');
@@ -97,6 +102,12 @@ export class PrinterService {
 	}
 
     }
+
+    get_status():  PRINTER_STATUS {
+	console.log('get_status');
+	return this.printer_status;
+    }
+    
     get_progress(): number {
 	console.log('get_progress');
 	return this.progress;
@@ -104,26 +115,44 @@ export class PrinterService {
     
     start(): void {
 	console.log('start');
+	this.printer_status = PRINTER_STATUS.BUSY;
 	this.progress_subscription =
-	    Observable.interval(300).take(100 - this.progress).subscribe( (x) => {
-	    this.progress = x;
+	    Observable.interval(300).takeWhile(
+		x => { return this.progress != 100; }
+	    ).subscribe( (x) => {
+		this.progress++;
 	    });
     }
 
-    stop(): void {
+    abort(): void {
 	console.log('stop');
-	if(this.progress_subscription != null &&
-	   !this.progress_subscription.isUnsubscribed()){
+
+	if(this.progress_subscription != null){
 	    this.progress = 0;
 	    this.progress_subscription.unsubscribe();
+	}
+
+	if( this.printer_status != PRINTER_STATUS.READY ) {
+	    Observable.interval(3000).take(1).subscribe(
+		x => {
+		    this.printer_status = PRINTER_STATUS.READY;
+		}
+	    );
 	}
     }
 
     pause(): void {
 	console.log('pause');
-	if(this.progress_subscription != null &&
-	   !this.progress_subscription.isUnsubscribed()){
+	if(this.progress_subscription != null){
 	    this.progress_subscription.unsubscribe();
+	}
+
+	if( this.printer_status != PRINTER_STATUS.PAUSE ) {
+	    Observable.interval(3000).take(1).subscribe(
+		x => {
+		    this.printer_status = PRINTER_STATUS.PAUSE;
+		}
+	    );
 	}
     }
     

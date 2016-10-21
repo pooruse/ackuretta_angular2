@@ -1,0 +1,9 @@
+<h2> Confirm Abortion </h2>
+<p>Hold on button to stop printing.</p>
+<button (click)="location.back()">Back</button>
+<button (mousedown)="onConfirmMouseDown()"
+	(mouseup)="onConfirmMouseUp()">Abort</button>
+
+<div *ngIf="isConfirmMouseDown">
+{{count}}
+  </div>

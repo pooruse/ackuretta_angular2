@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 
 @Component ({
     moduleId: module.id,
-    selector: 'my-detect-fan-error',
-    templateUrl: 'detect-fan-error.component.html'
+    selector: 'my-force-save-file',
+    templateUrl: 'force-save-file.component.html',
 })
 
-export class DetectFanErrorComponent {
+export class ForceSaveFileComponent {
+
     constructor(
 	private router: Router,
-    ) { }
+    ){}
+    
 }

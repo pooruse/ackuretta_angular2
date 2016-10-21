@@ -20,6 +20,12 @@ import { NoticeComponent } from './notice.component';
 import { BuildPlatformComponent } from './build-platform.component';
 import { DetectFanErrorComponent } from './detect-fan-error.component';
 import { PrintProgressComponent } from './print-progress.component';
+import { AbortPrinterComponent } from './abort-printer.component';
+import { PausePrinterComponent } from './pause-printer.component';
+import { ConfirmAbortionComponent } from './confirm-abortion.component';
+import { CompleteComponent } from './complete.component';
+import { SaveFileComponent } from './save-file.component';
+import { ForceSaveFileComponent } from './force-save-file.component';
 
 @NgModule({
     imports: [
@@ -42,6 +48,12 @@ import { PrintProgressComponent } from './print-progress.component';
 	BuildPlatformComponent,
 	DetectFanErrorComponent,
 	PrintProgressComponent,
+	AbortPrinterComponent,
+	PausePrinterComponent,
+	ConfirmAbortionComponent,
+	CompleteComponent,
+	SaveFileComponent,
+	ForceSaveFileComponent,	
     ],
     bootstrap: [ AppComponent ],
     providers: [ PrinterService ],

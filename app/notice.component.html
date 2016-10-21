@@ -1,6 +1,7 @@
 <h2>Notice</h2>
 <p>
   Are the resin tank and build platform in correct position?
+  (please press confirm button over 3 sec to start print)
 </p>
 <button (click)="router.navigate(['/select-storage'])">Abort</button>
 
@@ -8,4 +9,4 @@
   Confirm
 </button>
 
-<div *ngIf="isConfirmKeyDown">{{count}}</div>
+<div *ngIf="isConfirmMouseDown">{{count}}</div>

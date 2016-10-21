@@ -1,1 +1,13 @@
 <h2>Print Progress</h2>
+
+{{progress}} %
+
+<div *ngIf="isProgressEqualToZero">
+<button (click)="onAbort()">Abort</button>
+<button (click)="onPause()">Pause</button>
+</div>
+
+<div *ngIf="!isProgressEqualToZero">
+<button (click)="onContinue()">continue</button>
+</div>
+

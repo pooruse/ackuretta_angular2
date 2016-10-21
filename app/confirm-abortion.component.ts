@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
 import { Observable } from 'rxjs/Rx';
+import { PrinterService } from './printer.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
-    selector: 'my-notice',
-    templateUrl: 'notice.component.html'
+    selector: 'my-confirm-abortion',
+    templateUrl: 'confirm-abortion.component.html',
 })
 
-export class NoticeComponent{
-    
+export class ConfirmAbortionComponent {
+    private count: number;
     private isConfirmMouseDown: boolean = false;
     confirmSubscription: any;
-    private count:number = 0;
     
-    constructor(
+    constructor (
+	private location: Location,
 	private router: Router
     ) { }
-
     
     onConfirmMouseDown(): void {
 	console.log('down');
@@ -28,7 +28,7 @@ export class NoticeComponent{
 	    Observable.interval(1000).take(3).subscribe( (x) => {
 		this.count = 2 - x;
 		if(this.count == 0){
-		    this.router.navigate(['/build-platform']);
+		    this.router.navigate(['/abort-printer']);
 		}
 	    });
     }
