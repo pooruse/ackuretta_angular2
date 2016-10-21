@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { PrinterService } from './printer.service';
+import { PrinterService, PRINTER_STATUS } from './printer.service';
 import { Observable } from 'rxjs/Rx';
 
 @Component ({
@@ -14,7 +14,8 @@ export class PrintProgressComponent implements OnInit, OnDestroy{
 	private router: Router,
 	private printerService: PrinterService,
     ) { }
-    
+
+    private printer_status: PRINTER_STATUS;
     private progress: number;
     private isProgressEqualToZero: boolean = false;
     private isProgressStart: boolean = false;
@@ -23,10 +24,14 @@ export class PrintProgressComponent implements OnInit, OnDestroy{
     
     ngOnInit(): void {
 	this.progress = this.printerService.get_progress();
+	this.printer_status = this.printerService.get_status();
 
-	if(this.progress == 0) {
+	if(this.printer_status == PRINTER_STATUS.READY) {
 	    this.isProgressEqualToZero = true;
 	    this.printerService.start();
+	    this.startMonitor();
+	} else if (this.printer_status == PRINTER_STATUS.BUSY){
+	    this.isProgressEqualToZero = true;
 	    this.startMonitor();
 	} else {
 	    this.isProgressEqualToZero = false;
