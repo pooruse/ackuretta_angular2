@@ -17,6 +17,9 @@ import { FileConfirmComponent } from './file-confirm.component';
 import { FileDamagedComponent } from './file-damaged.component';
 import { ReconfirmCuringTimeComponent } from './reconfirm-curing-time.component';
 import { NoticeComponent } from './notice.component';
+import { BuildPlatformComponent } from './build-platform.component';
+import { DetectFanErrorComponent } from './detect-fan-error.component';
+import { PrintProgressComponent } from './print-progress.component';
 
 @NgModule({
     imports: [
@@ -36,6 +39,9 @@ import { NoticeComponent } from './notice.component';
 	FileDamagedComponent,
 	ReconfirmCuringTimeComponent,
 	NoticeComponent,
+	BuildPlatformComponent,
+	DetectFanErrorComponent,
+	PrintProgressComponent,
     ],
     bootstrap: [ AppComponent ],
     providers: [ PrinterService ],

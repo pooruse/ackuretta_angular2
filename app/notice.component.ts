@@ -32,7 +32,7 @@ export class NoticeComponent implements OnInit{
 	    Observable.interval(1000).take(3).subscribe( (x) => {
 		this.count = 2 - x;
 		if(this.count == 0){
-		    this.router.navigate(['/reconfirm-curing-time']);
+		    this.router.navigate(['/build-platform']);
 		}
 	    });
     }
@@ -41,6 +41,5 @@ export class NoticeComponent implements OnInit{
 	console.log('up');
 	this.isConfirmKeyDown = false;
 	this.confirmSubscription.unsubscribe();
-
     }
 }

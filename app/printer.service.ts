@@ -87,7 +87,16 @@ export class PrinterService {
 	console.log('get_status');
 	return true;
     }
-    
+    get_fan_status(): boolean {
+	let a = Math.random();
+	console.log('get_fan_status');
+	if(a > 0.2) {
+	    return true;
+	} else {
+	    return false;
+	}
+
+    }
     get_progress(): number {
 	console.log('get_progress');
 	return this.progress;

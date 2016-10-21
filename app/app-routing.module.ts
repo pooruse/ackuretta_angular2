@@ -11,6 +11,9 @@ import { FileConfirmComponent } from './file-confirm.component';
 import { FileDamagedComponent } from './file-damaged.component';
 import { ReconfirmCuringTimeComponent } from './reconfirm-curing-time.component';
 import { NoticeComponent } from './notice.component';
+import { BuildPlatformComponent } from './build-platform.component';
+import { DetectFanErrorComponent } from './detect-fan-error.component';
+import { PrintProgressComponent } from './print-progress.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/menu', pathMatch: 'full' },
@@ -24,6 +27,9 @@ const routes: Routes = [
     { path: 'file-damaged', component: FileDamagedComponent },
     { path: 'reconfirm-curing-time', component: ReconfirmCuringTimeComponent },
     { path: 'notice', component: NoticeComponent },
+    { path: 'build-platform', component: BuildPlatformComponent },
+    { path: 'detect-fan-error', component: DetectFanErrorComponent },
+    { path: 'print-progress', component: PrintProgressComponent },   
 ];
 
 @NgModule({
