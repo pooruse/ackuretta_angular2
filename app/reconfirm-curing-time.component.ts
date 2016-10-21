@@ -7,11 +7,11 @@ import { PrinterService, MY_PARAM } from './printer.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'my-recomfirm-curing-time',
-    templateUrl: 'recomfirm-curing-time.component.html',
+    selector: 'my-reconfirm-curing-time',
+    templateUrl: 'reconfirm-curing-time.component.html',
 })
 
-export class RecomfirmCuringTimeComponent implements OnInit{
+export class ReconfirmCuringTimeComponent implements OnInit{
     curing_time: MY_PARAM;
     isChange: boolean;
     

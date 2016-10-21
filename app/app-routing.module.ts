@@ -7,9 +7,10 @@ import { CleanVATComponent } from './clean-vat.component';
 import { SelectStorageComponent } from './select-storage.component';
 import { SelectFileFromUSBComponent } from './select-file-from-usb.component';
 import { SelectFileFromMemoryComponent } from './select-file-from-memory.component';
-import { FileComfirmComponent } from './file-comfirm.component';
+import { FileConfirmComponent } from './file-confirm.component';
 import { FileDamagedComponent } from './file-damaged.component';
-import { RecomfirmCuringTimeComponent } from './recomfirm-curing-time.component';
+import { ReconfirmCuringTimeComponent } from './reconfirm-curing-time.component';
+import { NoticeComponent } from './notice.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/menu', pathMatch: 'full' },
@@ -19,9 +20,10 @@ const routes: Routes = [
     { path: 'select-storage', component: SelectStorageComponent },
     { path: 'select-file-from-usb', component: SelectFileFromUSBComponent },
     { path: 'select-file-from-memory', component: SelectFileFromMemoryComponent },
-    { path: 'file-comfirm', component: FileComfirmComponent },
+    { path: 'file-confirm', component: FileConfirmComponent },
     { path: 'file-damaged', component: FileDamagedComponent },
-    { path: 'recomfirm-curing-time', component: RecomfirmCuringTimeComponent },
+    { path: 'reconfirm-curing-time', component: ReconfirmCuringTimeComponent },
+    { path: 'notice', component: NoticeComponent },
 ];
 
 @NgModule({

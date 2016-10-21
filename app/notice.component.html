@@ -1,0 +1,11 @@
+<h2>Notice</h2>
+<p>
+  Are the resin tank and build platform in correct position?
+</p>
+<button (click)="router.navigate(['/select-storage'])">Abort</button>
+
+<button (mouseup)="onConfirmMouseUp()" (mousedown)="onConfirmMouseDown()">
+  Confirm
+</button>
+
+<div *ngIf="isConfirmKeyDown">{{count}}</div>

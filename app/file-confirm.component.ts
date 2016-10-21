@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 
 @Component ({
     moduleId: module.id,
-    selector: 'file-comfirm',
-    templateUrl: 'file-comfirm.component.html',
+    selector: 'file-confirm',
+    templateUrl: 'file-confirm.component.html',
 })
 
-export class FileComfirmComponent {
+export class FileConfirmComponent {
     constructor (
 	private location: Location,
 	private router: Router,
