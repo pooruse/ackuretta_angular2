@@ -116,6 +116,9 @@ export class PrinterService {
     start(): void {
 	console.log('start');
 	this.printer_status = PRINTER_STATUS.BUSY;
+	if( this.progress == 100 ) {
+	    this.progress = 0;
+	}
 	this.progress_subscription =
 	    Observable.interval(300).takeWhile(
 		x => { return this.progress != 100; }
